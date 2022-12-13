@@ -6,15 +6,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.progress.exceptions.CrudValidationException;
-import com.progress.dao.ContactDAO;
-import com.progress.dao.ContactDAOJPARepository;
 import com.progress.model.Contact;
 
 import com.progress.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class HomeController {
+public class ContactController {
 
     @Autowired
     ContactService contactService;
