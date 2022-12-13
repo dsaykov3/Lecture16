@@ -76,4 +76,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new org.springframework.security.crypto.password.MessageDigestPasswordEncoder("SHA-256");
     }
+
 }
