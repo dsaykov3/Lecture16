@@ -30,7 +30,13 @@ CREATE TABLE IF NOT EXISTS `contact` (
   PRIMARY KEY (`contact_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3;
 
--- Data exporting was unselected.
+-- Dumping data for table contactdb.contact: ~5 rows (approximately)
+INSERT INTO `contact` (`contact_id`, `name`, `email`, `address`, `telephone`, `group_id`) VALUES
+	(27, 'Dimitar Saykovddfd', 'dsaykov@mail.bg', 'Sofia', '012312', 1),
+	(31, 'Georgi', 'georgi@maol.bg', 'dddd', 'asdas', 2),
+	(33, 'Ivan', 'ivan@mal.dd', '', '', 1),
+	(34, 'Dian', 'dean@madd.ggsd', '', '', 1),
+	(35, 'Petar', 'petar@mdai.bg', '', '', 1);
 
 -- Dumping structure for table contactdb.contact_group
 CREATE TABLE IF NOT EXISTS `contact_group` (
@@ -39,7 +45,10 @@ CREATE TABLE IF NOT EXISTS `contact_group` (
   PRIMARY KEY (`group_Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table contactdb.contact_group: ~0 rows (approximately)
+INSERT INTO `contact_group` (`group_Id`, `group_name`) VALUES
+	(1, 'Private'),
+	(2, 'Public');
 
 -- Dumping structure for table contactdb.sys_privilege
 CREATE TABLE IF NOT EXISTS `sys_privilege` (
@@ -48,7 +57,12 @@ CREATE TABLE IF NOT EXISTS `sys_privilege` (
   PRIMARY KEY (`SysPrivilege_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table contactdb.sys_privilege: 2 rows
+/*!40000 ALTER TABLE `sys_privilege` DISABLE KEYS */;
+INSERT INTO `sys_privilege` (`SysPrivilege_ID`, `Descr`) VALUES
+	(1, 'ADMINISTRATOR'),
+	(2, 'EMPLOYEE');
+/*!40000 ALTER TABLE `sys_privilege` ENABLE KEYS */;
 
 -- Dumping structure for table contactdb.user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -62,7 +76,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`User_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=91764 DEFAULT CHARSET=utf8mb3;
 
--- Data exporting was unselected.
+-- Dumping data for table contactdb.user: ~5 rows (approximately)
+INSERT INTO `user` (`User_ID`, `User_Name`, `Name`, `Status`, `Password`, `Email`, `Phone`) VALUES
+	(1, 'dsaykov', 'SYSTEM', 1, 'f2e0c8ff4edf21a631e8492092b554f4d0df250a7d6030c297f96be6dc1a6940', 'd.saykov@flammen.bg', ''),
+	(23201, 'r.atsinov', 'Радко Ацинов', 1, 'f2e0c8ff4edf21a631e8492092b554f4d0df250a7d6030c297f96be6dc1a6940', '', ''),
+	(23202, 'd.stoilov', 'Динко Стоилов', 1, 'bdaaf42bcd99884bd87920ac5eca9ab14fb3453b0a89652baabc7d007c5acb3b', '', ''),
+	(26201, 'admin', 'ADMIN', 1, 'f2e0c8ff4edf21a631e8492092b554f4d0df250a7d6030c297f96be6dc1a6940', '', ''),
+	(34932, 'dragomira.eneva', 'Драгомира Енева', 1, '8778e49fae38593a6310de7e7ce9e473bdb5fa52a05e536416859f6187b948fb', '', '');
 
 -- Dumping structure for table contactdb.user_right
 CREATE TABLE IF NOT EXISTS `user_right` (
@@ -71,7 +91,41 @@ CREATE TABLE IF NOT EXISTS `user_right` (
   PRIMARY KEY (`User_ID`,`SysPrivilege_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- Data exporting was unselected.
+-- Dumping data for table contactdb.user_right: ~33 rows (approximately)
+INSERT INTO `user_right` (`User_ID`, `SysPrivilege_ID`) VALUES
+	(1, 1),
+	(1, 2),
+	(4751, 1),
+	(4751, 2),
+	(4752, 1),
+	(4752, 2),
+	(4753, 1),
+	(4753, 2),
+	(4754, 1),
+	(4754, 2),
+	(4755, 1),
+	(4755, 2),
+	(4756, 1),
+	(4756, 2),
+	(23201, 2),
+	(23202, 1),
+	(23202, 2),
+	(23203, 1),
+	(23203, 2),
+	(26201, 2),
+	(34932, 1),
+	(34932, 2),
+	(62983, 2),
+	(62984, 2),
+	(62987, 2),
+	(62988, 2),
+	(62989, 2),
+	(63365, 2),
+	(78712, 1),
+	(78712, 2),
+	(91762, 1),
+	(91762, 2),
+	(91763, 2);
 
 -- Dumping structure for view contactdb.user_rights_view
 -- Creating temporary table to overcome VIEW dependency errors
@@ -87,7 +141,12 @@ CREATE TABLE IF NOT EXISTS `user_status` (
   PRIMARY KEY (`Status_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table contactdb.user_status: 2 rows
+/*!40000 ALTER TABLE `user_status` DISABLE KEYS */;
+INSERT INTO `user_status` (`Status_ID`, `Descr`) VALUES
+	(1, 'Активен'),
+	(2, 'Блокиран');
+/*!40000 ALTER TABLE `user_status` ENABLE KEYS */;
 
 -- Dumping structure for view contactdb.user_rights_view
 -- Removing temporary table and create final VIEW structure
