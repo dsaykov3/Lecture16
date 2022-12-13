@@ -1,4 +1,6 @@
-# SpringDataLecture14
+# SpringDataLecture 16
+
+Thymeleaf views
 
 Add this to bin->tomcat_users.xml
 <role rolename="manager-gui"/>
