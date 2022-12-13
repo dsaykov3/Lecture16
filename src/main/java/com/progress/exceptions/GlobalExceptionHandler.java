@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 public class GlobalExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @ExceptionHandler(CrudValidationException.class)
+    @ExceptionHandler({CrudValidationException.class, RuntimeException.class})
     public ModelAndView handleEmployeeNotFoundException(HttpServletRequest request, CrudValidationException ex){
         logger.error("Requested URL="+request.getRequestURL());
         logger.error("Exception Raised="+ex);

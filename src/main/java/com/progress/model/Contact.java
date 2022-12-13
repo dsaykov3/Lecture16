@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name="contact")
@@ -22,6 +24,13 @@ public class Contact implements Serializable{
 	private String address;
         @Column(name="telephone")
 	private String telephone;
+
+	@Column(name="group_id")
+	private int groupId;
+
+	@ManyToOne
+	@JoinColumn(name = "group_id", referencedColumnName = "group_id", insertable = false, updatable = false)
+	private ContactGroup group;
 
 	public Contact() {
 	}
@@ -73,4 +82,19 @@ public class Contact implements Serializable{
 		this.telephone = telephone;
 	}
 
+	public ContactGroup getGroup() {
+		return group;
+	}
+
+	public void setGroup(ContactGroup group) {
+		this.group = group;
+	}
+
+	public int getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
+	}
 }

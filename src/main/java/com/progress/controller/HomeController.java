@@ -14,6 +14,7 @@ import com.progress.model.Contact;
 import com.progress.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,6 +55,7 @@ public class HomeController {
     public ModelAndView newContact(ModelAndView model) {
         Contact newContact = new Contact();
         model.addObject("contact", newContact);
+        model.addObject("contactGroups", contactService.getAllContactGroups());
         model.setViewName("editContact");
         return model;
     }
@@ -62,19 +64,8 @@ public class HomeController {
     public ModelAndView saveContact(@ModelAttribute Contact contact) {
         ModelAndView model = new ModelAndView("redirect:/");
         contactDAO.saveOrUpdate(contact);
-        /*try {
-            contactDAO.saveOrUpdate(contact);
-        } catch (CrudValidationException e) {
-            model.setViewName("editContact");
-            model.addObject("contact", contact);
-            model.addObject("message", e.getMessage());
-            return model;
-        }
-
-         */
         return model;
     }
-
 
     @RequestMapping(value = "/deleteContact", method = RequestMethod.GET)
     public ModelAndView deleteContact(HttpServletRequest request) {
@@ -89,6 +80,7 @@ public class HomeController {
         Contact contact = contactService.getById(contactId);
         ModelAndView model = new ModelAndView("editContact");
         model.addObject("contact", contact);
+        model.addObject("contactGroups", contactService.getAllContactGroups());
 
         return model;
     }
