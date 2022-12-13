@@ -26,9 +26,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 
     @Autowired
-    private ContactDAO contactDAO;
-
-    @Autowired
     ContactService contactService;
 
     @RequestMapping(value = "/")
@@ -63,7 +60,7 @@ public class HomeController {
     @RequestMapping(value = "/saveContact", method = RequestMethod.POST)
     public ModelAndView saveContact(@ModelAttribute Contact contact) {
         ModelAndView model = new ModelAndView("redirect:/");
-        contactDAO.saveOrUpdate(contact);
+        contactService.saveOrUpdate(contact);
         return model;
     }
 
