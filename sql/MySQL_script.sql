@@ -1,22 +1,6 @@
--- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Server version:               8.0.31 - MySQL Community Server - GPL
--- Server OS:                    Win64
--- HeidiSQL Version:             12.1.0.6537
--- --------------------------------------------------------
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
 
 -- Dumping database structure for contactdb
-CREATE DATABASE IF NOT EXISTS `contactdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `contactdb` ;
 USE `contactdb`;
 
 -- Dumping structure for table contactdb.contact
@@ -28,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `telephone` varchar(45) NOT NULL,
   `group_id` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`contact_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table contactdb.contact: ~5 rows (approximately)
 INSERT INTO `contact` (`contact_id`, `name`, `email`, `address`, `telephone`, `group_id`) VALUES
@@ -43,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `contact_group` (
   `group_Id` int NOT NULL AUTO_INCREMENT,
   `group_name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`group_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Dumping data for table contactdb.contact_group: ~0 rows (approximately)
 INSERT INTO `contact_group` (`group_Id`, `group_name`) VALUES
@@ -53,9 +37,9 @@ INSERT INTO `contact_group` (`group_Id`, `group_name`) VALUES
 -- Dumping structure for table contactdb.sys_privilege
 CREATE TABLE IF NOT EXISTS `sys_privilege` (
   `SysPrivilege_ID` int NOT NULL,
-  `Descr` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `Descr` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`SysPrivilege_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Dumping data for table contactdb.sys_privilege: 2 rows
 /*!40000 ALTER TABLE `sys_privilege` DISABLE KEYS */;
@@ -74,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Email` varchar(100) DEFAULT NULL,
   `Phone` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`User_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=91764 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=91764 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table contactdb.user: ~5 rows (approximately)
 INSERT INTO `user` (`User_ID`, `User_Name`, `Name`, `Status`, `Password`, `Email`, `Phone`) VALUES
@@ -89,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `user_right` (
   `User_ID` int NOT NULL,
   `SysPrivilege_ID` int NOT NULL,
   PRIMARY KEY (`User_ID`,`SysPrivilege_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dumping data for table contactdb.user_right: ~33 rows (approximately)
 INSERT INTO `user_right` (`User_ID`, `SysPrivilege_ID`) VALUES
@@ -130,16 +114,16 @@ INSERT INTO `user_right` (`User_ID`, `SysPrivilege_ID`) VALUES
 -- Dumping structure for view contactdb.user_rights_view
 -- Creating temporary table to overcome VIEW dependency errors
 CREATE TABLE `user_rights_view` (
-	`UserName` VARCHAR(100) NULL COLLATE 'utf8mb3_general_ci',
-	`GroupName` VARCHAR(30) NOT NULL COLLATE 'utf8mb3_unicode_ci'
+	`UserName` VARCHAR(100) NULL COLLATE 'utf8_general_ci',
+	`GroupName` VARCHAR(30) NOT NULL COLLATE 'utf8_general_ci'
 ) ENGINE=MyISAM;
 
 -- Dumping structure for table contactdb.user_status
 CREATE TABLE IF NOT EXISTS `user_status` (
   `Status_ID` int NOT NULL,
-  `Descr` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `Descr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`Status_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- Dumping data for table contactdb.user_status: 2 rows
 /*!40000 ALTER TABLE `user_status` DISABLE KEYS */;
